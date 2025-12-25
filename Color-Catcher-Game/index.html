@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="A fun Color Catcher game built with JavaScript">
+	<title>Color Catcher</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+	<button id="themeToggle" class="mode-btn">🌙 Dark Mode</button>
+
+	<div class="gameContainer">
+
+		<header>
+			<h1>🎯 Color Catcher</h1>
+			<h4>🔎 Find this👉 color: <span id="targetColor"></span></h4>
+		</header>
+
+		<div id="grid" class="colorGrid"></div>
+
+		<div class="game-stats">
+			<p>⏱️ Time Left: <span id="time">60</span>s</p>
+			<p>⭐ Score: <span id="score">0</span></p>
+		</div>
+
+		<div class="controls">
+			<button id="startBtn">🎮 Start Game</button>
+			<button id="pauseBtn" disabled>⏸️ Pause</button>
+			<button id="quitBtn" disabled>❌ Quit</button>
+		</div>
+
+	</div>
+
+	<script src="script.js"></script>
+</body>
+
+</html>

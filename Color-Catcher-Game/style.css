@@ -1,0 +1,169 @@
+ /* =========================================
+    1. VARIABLES & THEME CONFIGURATION
+   ========================================= */
+:root {
+  /* Core Colors */
+  --primary-blue: #2563eb;
+  --success-green: #2ed573;
+  --danger-red: #ff4757;
+  --disabled-gray: #cccccc;
+
+  /* Light Theme Defaults */
+  --bg-body: #f0f0f0;
+  --bg-card: #ffffff;
+  --text-main: #333333;
+  --text-inverted: #ffffff;
+  --shadow-color: rgba(0, 0, 0, 0.15);
+}
+
+/* Dark Mode Overrides (Just swap the variables!) */
+body.dark-mode {
+  --bg-body: #121212;
+  --bg-card: #024146;
+  /* Corrected: Standard Dark Grey */
+  --text-main: #ffffff;
+  --text-inverted: #333333;
+  --shadow-color: rgba(255, 255, 255, 0.2);
+
+}
+
+/* =========================================
+    2. GLOBAL RESET & BASE STYLES
+   ========================================= */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center; /* Horizontal Center */
+  align-items: center;/* Vertical Center */
+  background-color: var(--bg-body);
+  color: var(--text-main);
+  font-family: system-ui, -apple-system, sans-serif;
+  line-height: 1.5;
+  text-align: center;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Media defaults */
+img, picture, video, canvas,svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* Typography defaults */
+h1, h2, h3, h4, h5, h6, p {
+  overflow-wrap: break-word;
+}
+
+/* =========================================
+    3. COMPONENT: GAME CONTAINER
+   ========================================= */
+.gameContainer {
+  width: 100%;
+  max-width: 600px;
+  padding: 20px;
+  background-color: var(--bg-card);
+  border-radius: 12px;
+  box-shadow: 0 0 15px var(--shadow-color);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.game-stats {
+  display: flex;
+  justify-content: space-around;
+  margin: 10px 0;
+  font-weight: bold;
+}
+
+.colorGrid {
+  display: grid;
+  /* Columns are handled by JS, but we can set a default here */
+  margin-bottom: 20px;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+/* =========================================
+    4. BUTTON STYLES
+   ========================================= */
+/* Shared button styles */
+button,
+.mode-btn {
+  font: inherit;
+  cursor: pointer;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  transition: opacity 0.2s, background-color 0.2s;
+}
+
+button:disabled {
+  background-color: var(--disabled-gray) !important;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+button:focus-visible {
+  outline: 2px solid var(--primary-blue);
+  outline-offset: 2px;
+}
+/* Specific Button Colors */
+#startBtn {
+  background-color: var(--success-green);
+  color: white;
+}
+
+#pauseBtn {
+  background-color: #f1c40f;
+  /* Yellow/Orange color */
+  color: #333;
+}
+
+#quitBtn {
+  background-color: var(--danger-red);
+  color: white;
+}
+
+/* Theme Toggle Button (Absolute Position) */
+.mode-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 8px 16px;
+  border-radius: 20px;
+
+  /* Inverts colors relative to the theme */
+  background-color: var(--text-main);
+  color: var(--bg-card);
+}
+
+/* =========================================
+    5. Blur Effect for Game Pause
+   ========================================= */
+/* Add to style.css */
+
+/* When the grid is paused, blur it so players can't cheat */
+.grid-blurred {
+  filter: blur(10px);
+  /* Makes squares fuzzy */
+  pointer-events: none;
+  /* Disables clicking while paused */
+  opacity: 0.5;
+}
